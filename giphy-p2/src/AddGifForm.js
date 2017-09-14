@@ -9,7 +9,7 @@ class AddGifForm extends Component {
       >
       <input
           type='text'
-          value={this.props.inputGifValue}
+          value={this.props.inputSearchValue}
           placeholder='Search Gif'
           name='gif'
           onChange={this.props.handleInputGifChange}
@@ -17,9 +17,9 @@ class AddGifForm extends Component {
 
       <input
           type='text'
-          value={this.props.quantityValue}
+          value={this.props.inputNumberValue}
           name='quantity'
-          placeholder='add quantity'
+          placeholder='Number of Gifs'
           onChange={this.props.handleQuantityChange}
           /><br/>
 

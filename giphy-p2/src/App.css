@@ -22,3 +22,20 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.well{
+  font-size: 20px;
+  color: yellow;
+  text-shadow: white;
+  text-align: center;
+}
+
+.welly{
+  font-size: 15px;
+  color: blue;
+  text-align: center;
+}
+
+
+
+

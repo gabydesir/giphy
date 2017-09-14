@@ -6,9 +6,10 @@ class GifList extends Component {
   render (){
    return (
     <div>
+      { this.props.searchData.map((gif, i) => {
+         return <Gif gif={gif} key={gif.id}/>
+      })}
 
-    <Gif gifdata={this.props.gifdata}/>
-     <button onClick={this.props.newGif}>CLICK MEEEEEE</button>
     </div>
 
   )

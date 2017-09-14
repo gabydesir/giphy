@@ -4,46 +4,49 @@ import './App.css';
 import axios from 'axios';
 import AddGifForm from './AddGifForm';
 import GifList from './GifList';
+import {emojify} from 'react-emojione';
 
 class App extends Component {
   //setting the state & bidding
   constructor (){
     super();
     this.state = {
-      apiData: {},
+      gifs: {},
+      inputSearchValue: '',
+      inputNumberValue: '',
     }
-    this.newGif = this.newGif.bind(this);
+    // this.newGif = this.newGif.bind(this);
     this.handleInputGifChange = this.handleInputGifChange.bind(this);
     this.handleQuantityChange = this.handleQuantityChange.bind(this);
+    this.handleGifSubmit = this.handleGifSubmit.bind(this);
   }
 
-  newGif (){
-    // calling the API
-    axios('https://api.giphy.com/v1/gifs/random?api_key=351c779bdf01493688ea143b2cd2887f&tag=&rating=G')
-      .then((res) => {
-        console.log(res)
-      this.setState({
-        apiData: res.data.data
-      })
-    })
-  }
 
   handleInputGifChange(e){
       this.setState({
-        handleInputGifChange: e.target.value
+        inputSearchValue: e.target.value
       });
   }
 
   handleQuantityChange(e){
       this.setState({
-        handleQuantityChange: e.target.value
+        inputNumberValue: e.target.value
       });
   }
 
-  handleGifSubmit(){
-
+  handleGifSubmit(e) {
+    e.preventDefault();
+    // e.target.gif = '';
+    // e.target.quantity = '';
+      // axios(`https://api.giphy.com/v1/gifs/search?q=${this.state.inputSearchValue}&api_key=351c779bdf01493688ea143b2cd2887f&limit=${this.state.inputNumberValue}&offset=0&rating=G`)
+      axios(`http://api.giphy.com/v1/gifs/search?q=${this.state.inputSearchValue}&api_key=8d389ff5456642e489c71009f416603d&limit=${this.state.inputNumberValue}&offset=0&rating=G`)
+      .then((res) => {
+        console.log(res)
+        this.setState({
+          gifs: res.data.data
+      })
+    })
   }
-
 
   render() {
     //Rendering according to my liking
@@ -51,16 +54,18 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to My Gif App</h2>
+          <h2 className='well'>Welcome to My Gif App {emojify(':wink: :D :sparkles:')}</h2>
+          <h3 className='welly'>You deserve all the sassiness {emojify(':wink:')}</h3>
         </div>
         <AddGifForm
             handleGifSubmit={this.handleGifSubmit}
             handleInputGifChange={this.handleInputGifChange}
             handleQuantityChange={this.handleQuantityChange}
+            inputNumberValue={this.state.inputNumberValue}
+            inputSearchValue={this.state.inputSearchValue}
         />
+        <GifList searchData={this.state.gifs}/>
 
-        <GifList gifdata={this.state.apiData}
-                 newGif={this.newGif}/>
       </div>
     );
   }
