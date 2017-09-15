@@ -11,7 +11,7 @@ class App extends Component {
   constructor (){
     super();
     this.state = {
-      gifs: {},
+      gifs: [],
       inputSearchValue: '',
       inputNumberValue: '',
     }
@@ -55,7 +55,7 @@ class App extends Component {
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2 className='well'>Welcome to My Gif App {emojify(':wink: :D :sparkles:')}</h2>
-          <h3 className='welly'>You deserve all the sassiness {emojify(':wink:')}</h3>
+          <h3 className='welly'>You deserve all the sassiness</h3>
         </div>
         <AddGifForm
             handleGifSubmit={this.handleGifSubmit}
