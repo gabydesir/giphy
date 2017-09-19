@@ -8,6 +8,7 @@ class AddGifForm extends Component {
       onSubmit={this.props.handleGifSubmit}
       >
       <input
+          id= 'input1'
           type='text'
           value={this.props.inputSearchValue}
           placeholder='Search Gif'
@@ -16,6 +17,7 @@ class AddGifForm extends Component {
          /><br/>
 
       <input
+          id='input2'
           type='text'
           value={this.props.inputNumberValue}
           name='quantity'
@@ -23,7 +25,7 @@ class AddGifForm extends Component {
           onChange={this.props.handleQuantityChange}
           /><br/>
 
-      <button id='submit'> ALL THE GIFF</button>
+      <button className='circle'> All THE GIFF</button>
     </form>
     );
   }
